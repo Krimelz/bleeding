@@ -36,8 +36,7 @@ namespace Codebase.Components.UI
 		[SerializeField]
 		private AudioClip _clickClip;
 
-		private Sequence _enterSequence;
-		private Sequence _exitSequence;
+		private Sequence _hoverSequence;
 		private Sequence _clickSequence;
 
 		private void Awake()
@@ -51,19 +50,10 @@ namespace Codebase.Components.UI
 			{
 				_audioSource.PlayOneShot(_hoverClip);
 
-				_exitSequence.Complete();
-				_enterSequence = DOTween.Sequence()
-					.Join(transform.DOShakePosition(_shakePositionDuration, _shakePositionStrength))
-					.Join(transform.DOShakeRotation(_shakeRotationDuration, Vector3.forward * _shakeRotationStrength))
-					.Play();
-			};
-
-			EventHandler.OnExit += () =>
-			{
-				_enterSequence.Complete();
-				_exitSequence = DOTween.Sequence()
-					.Join(transform.DOShakePosition(_shakePositionDuration, _shakePositionStrength))
-					.Join(transform.DOShakeRotation(_shakeRotationDuration, Vector3.forward * _shakeRotationStrength))
+				_hoverSequence.Complete();
+				_hoverSequence = DOTween.Sequence()
+					.Join(_text.transform.DOShakePosition(_shakePositionDuration, _shakePositionStrength))
+					.Join(_text.transform.DOShakeRotation(_shakeRotationDuration, Vector3.forward * _shakeRotationStrength))
 					.Play();
 			};
 
@@ -75,7 +65,7 @@ namespace Codebase.Components.UI
 
 					_clickSequence.Complete();
 					_clickSequence = DOTween.Sequence()
-						.Append(transform.DOShakeScale(_shakeScaleDuration, _shakeScaleStrength, 10))
+						.Append(_text.transform.DOShakeScale(_shakeScaleDuration, _shakeScaleStrength, 10))
 						.Play();
 				}
 			};
