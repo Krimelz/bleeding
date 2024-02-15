@@ -10,7 +10,7 @@ namespace Codebase.Components.UI
 		public event System.Action OnClick;
 		public event System.Action OnDown;
 		public event System.Action OnEnter;
-		public event System.Action OnExit;
+		public event System.Action<PointerEventData> OnExit;
 		public event System.Action OnUp;
 
 		public void OnPointerClick(PointerEventData eventData)
@@ -30,7 +30,7 @@ namespace Codebase.Components.UI
 
 		public void OnPointerExit(PointerEventData eventData)
 		{
-			OnExit?.Invoke();
+			OnExit?.Invoke(eventData);
 		}
 
 		public void OnPointerUp(PointerEventData eventData)

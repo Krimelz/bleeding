@@ -14,6 +14,9 @@ namespace Codebase.Components.UI
 		[Header("Render Target")]
 		[SerializeField]
 		private TMP_Text _text;
+		[Header("Ease")]
+		[SerializeField]
+		private Ease _ease;
 		[Header("Duration")]
 		[SerializeField]
 		private float _shakePositionDuration = 1f;
@@ -36,7 +39,8 @@ namespace Codebase.Components.UI
 		[SerializeField]
 		private AudioClip _clickClip;
 
-		private Sequence _hoverSequence;
+		private Sequence _enterSequence;
+		private Sequence _exitSequence;
 		private Sequence _clickSequence;
 
 		private void Awake()
@@ -50,10 +54,24 @@ namespace Codebase.Components.UI
 			{
 				_audioSource.PlayOneShot(_hoverClip);
 
-				_hoverSequence.Complete();
-				_hoverSequence = DOTween.Sequence()
-					.Join(_text.transform.DOShakePosition(_shakePositionDuration, _shakePositionStrength))
-					.Join(_text.transform.DOShakeRotation(_shakeRotationDuration, Vector3.forward * _shakeRotationStrength))
+				_exitSequence.Complete();
+				_enterSequence = DOTween.Sequence()
+					.Join(_text.transform.DOShakePosition(_shakePositionDuration, _shakePositionStrength, 16))
+					.Join(_text.transform.DOShakeRotation(_shakeRotationDuration, Vector3.forward * _shakeRotationStrength, 12))
+					.Join(_text.transform.DOShakeScale(_shakeScaleDuration, _shakeScaleStrength, 12))
+					.SetEase(_ease)
+					.Play();
+			};
+
+			EventHandler.OnExit += (data) =>
+			{
+				_audioSource.PlayOneShot(_hoverClip, 0.5f);
+
+				_enterSequence.Complete();
+				_exitSequence = DOTween.Sequence()
+					.Join(_text.transform.DOShakePosition(_shakePositionDuration, _shakePositionStrength, 5))
+					.Join(_text.transform.DOShakeRotation(_shakeRotationDuration, Vector3.forward * _shakeRotationStrength, 6))
+					.SetEase(_ease)
 					.Play();
 			};
 
