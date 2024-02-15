@@ -2,6 +2,7 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 namespace Assets.Codebase.Components.UI
@@ -20,6 +21,12 @@ namespace Assets.Codebase.Components.UI
 		private Image _startFade;
 		[SerializeField]
 		private Image _exitFade;
+
+		[SerializeField]
+		private AudioMixer _audioMixer;
+
+		private const string SoundVolume = "SoundVolume";
+		private const string MusicVolume = "MusicVolume";
 
 		private bool _isEnabledSound = true;
 		private bool _isEnabledMusic = true;
@@ -43,6 +50,7 @@ namespace Assets.Codebase.Components.UI
 				{
 					_isEnabledSound = !_isEnabledSound;
 					_sound.SetActive(_isEnabledSound);
+					_audioMixer.SetFloat(SoundVolume, _isEnabledSound ? 0f : -80f);
 				}
 			};
 
@@ -52,6 +60,7 @@ namespace Assets.Codebase.Components.UI
 				{
 					_isEnabledMusic = !_isEnabledMusic;
 					_music.SetActive(_isEnabledMusic);
+					_audioMixer.SetFloat(MusicVolume, _isEnabledMusic ? 0f : -80f);
 				}
 			};
 

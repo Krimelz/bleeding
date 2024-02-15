@@ -30,6 +30,8 @@ namespace Codebase.Components.UI
 		private float _shakeScaleStrength = 0.3f;
 		[Header("Sounds")]
 		[SerializeField]
+		private AudioSource _audioSource;
+		[SerializeField]
 		private AudioClip _hoverClip;
 		[SerializeField]
 		private AudioClip _clickClip;
@@ -47,7 +49,7 @@ namespace Codebase.Components.UI
 		{
 			EventHandler.OnEnter += () =>
 			{
-				AudioSource.PlayClipAtPoint(_hoverClip, Vector3.zero);
+				_audioSource.PlayOneShot(_hoverClip);
 
 				_exitSequence.Complete();
 				_enterSequence = DOTween.Sequence()
@@ -69,7 +71,7 @@ namespace Codebase.Components.UI
 			{
 				if (Clickable)
 				{
-					AudioSource.PlayClipAtPoint(_clickClip, Vector3.zero);
+					_audioSource.PlayOneShot(_clickClip);
 
 					_clickSequence.Complete();
 					_clickSequence = DOTween.Sequence()
