@@ -7,9 +7,9 @@ namespace Codebase.Components.UI
 	[RequireComponent(typeof(EventHandlerComponent))]
 	public class ButtonComponent : MonoBehaviour
 	{
-		public EventHandlerComponent EventHandler { get; private set; }
 		[field: SerializeField]
 		public bool Clickable { get; set; } = true;
+		public EventHandlerComponent EventHandler { get; private set; }
 
 		[Header("Render Target")]
 		[SerializeField]
@@ -28,6 +28,11 @@ namespace Codebase.Components.UI
 		private float _shakeRotationStrength = 2f;
 		[SerializeField]
 		private float _shakeScaleStrength = 0.3f;
+		[Header("Sounds")]
+		[SerializeField]
+		private AudioClip _hoverClip;
+		[SerializeField]
+		private AudioClip _clickClip;
 
 		private Sequence _enterSequence;
 		private Sequence _exitSequence;
@@ -42,6 +47,8 @@ namespace Codebase.Components.UI
 		{
 			EventHandler.OnEnter += () =>
 			{
+				AudioSource.PlayClipAtPoint(_hoverClip, Vector3.zero);
+
 				_exitSequence.Complete();
 				_enterSequence = DOTween.Sequence()
 					.Join(transform.DOShakePosition(_shakePositionDuration, _shakePositionStrength))
@@ -62,6 +69,8 @@ namespace Codebase.Components.UI
 			{
 				if (Clickable)
 				{
+					AudioSource.PlayClipAtPoint(_clickClip, Vector3.zero);
+
 					_clickSequence.Complete();
 					_clickSequence = DOTween.Sequence()
 						.Append(transform.DOShakeScale(_shakeScaleDuration, _shakeScaleStrength, 10))

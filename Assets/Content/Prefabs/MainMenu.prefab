@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b1d30d58c991a45b5121e8848817b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Clickable>k__BackingField: 1
   _text: {fileID: 2791720515927554804}
   _shakePositionDuration: 1
   _shakeRotationDuration: 1.5
@@ -169,6 +170,8 @@ MonoBehaviour:
   _shakePositionStrength: 20
   _shakeRotationStrength: 5
   _shakeScaleStrength: 0.3
+  _hoverClip: {fileID: 8300000, guid: 24383322f82f68c418afef8adfd99697, type: 3}
+  _clickClip: {fileID: 8300000, guid: 3a637bfca285c104d87c14164d30e68d, type: 3}
 --- !u!1 &1053626981665105836
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b1d30d58c991a45b5121e8848817b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Clickable>k__BackingField: 1
   _text: {fileID: 6427536748719699737}
   _shakePositionDuration: 1
   _shakeRotationDuration: 1.5
@@ -338,6 +342,8 @@ MonoBehaviour:
   _shakePositionStrength: 20
   _shakeRotationStrength: 5
   _shakeScaleStrength: 0.3
+  _hoverClip: {fileID: 8300000, guid: 24383322f82f68c418afef8adfd99697, type: 3}
+  _clickClip: {fileID: 8300000, guid: 3a637bfca285c104d87c14164d30e68d, type: 3}
 --- !u!1 &1674071155900464053
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,6 +959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b1d30d58c991a45b5121e8848817b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Clickable>k__BackingField: 1
   _text: {fileID: 4004780155300393976}
   _shakePositionDuration: 1
   _shakeRotationDuration: 1.5
@@ -960,6 +967,8 @@ MonoBehaviour:
   _shakePositionStrength: 20
   _shakeRotationStrength: 5
   _shakeScaleStrength: 0.3
+  _hoverClip: {fileID: 8300000, guid: 24383322f82f68c418afef8adfd99697, type: 3}
+  _clickClip: {fileID: 8300000, guid: 3a637bfca285c104d87c14164d30e68d, type: 3}
 --- !u!1 &5489932670683085088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,6 +1332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b1d30d58c991a45b5121e8848817b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Clickable>k__BackingField: 1
   _text: {fileID: 1692214762990899083}
   _shakePositionDuration: 1
   _shakeRotationDuration: 1.5
@@ -1330,6 +1340,8 @@ MonoBehaviour:
   _shakePositionStrength: 20
   _shakeRotationStrength: 5
   _shakeScaleStrength: 0.3
+  _hoverClip: {fileID: 8300000, guid: 24383322f82f68c418afef8adfd99697, type: 3}
+  _clickClip: {fileID: 8300000, guid: 3a637bfca285c104d87c14164d30e68d, type: 3}
 --- !u!1 &9126667837108177274
 GameObject:
   m_ObjectHideFlags: 0

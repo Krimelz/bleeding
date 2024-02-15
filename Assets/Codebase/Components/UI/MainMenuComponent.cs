@@ -29,19 +29,11 @@ namespace Assets.Codebase.Components.UI
 			_start.EventHandler.OnClick += async () =>
 			{
 				if (_start.Clickable)
-				{ 
-					_start.Clickable = false;
-					_sound.Clickable = false;
-					_music.Clickable = false;
-					_exit.Clickable = false;
-
+				{
+					_startFade.raycastTarget = true;
 					await _startFade.DOFade(1f, 1f).AwaitForComplete();
 					await _startFade.DOFade(0f, 0.2f).AwaitForComplete();
-
-					_start.Clickable = true;
-					_sound.Clickable = true;
-					_music.Clickable = true;
-					_exit.Clickable = true;
+					_startFade.raycastTarget = false;
 				}
 			};
 
@@ -67,20 +59,14 @@ namespace Assets.Codebase.Components.UI
 			{
 				if (_exit.Clickable)
 				{
-					_start.Clickable = false;
-					_sound.Clickable = false;
-					_music.Clickable = false;
-					_exit.Clickable = false;
-
+					_exitFade.raycastTarget = true;
 					await _exitFade.DOFade(1f, 1f).AwaitForComplete();
 					Application.Quit();
 
+					#if UNITY_EDITOR
 					await _exitFade.DOFade(0f, 0.2f).AwaitForComplete();
-
-					_start.Clickable = true;
-					_sound.Clickable = true;
-					_music.Clickable = true;
-					_exit.Clickable = true;
+					_exitFade.raycastTarget= false;
+					#endif
 				}
 			};
 		}
