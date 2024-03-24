@@ -8,10 +8,9 @@ namespace Codebase.Infrastructure.Services
 {
 	public class SceneService
     {
-		public async UniTask<SceneInstance> Load(string name, bool activateOnLoad, LoadSceneMode loadMode = LoadSceneMode.Additive)
+		public UniTask<SceneInstance> Load(string name, bool activateOnLoad, LoadSceneMode loadMode = LoadSceneMode.Additive)
 		{
-			var handler = await Addressables.LoadSceneAsync(name, loadMode, activateOnLoad).Task.AsUniTask();
-			return handler;
+			return Addressables.LoadSceneAsync(name, loadMode, activateOnLoad).Task.AsUniTask();
 		}
 
 		public async UniTask Unload(Scene scene)

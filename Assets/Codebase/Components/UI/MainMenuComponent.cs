@@ -24,6 +24,8 @@ namespace Assets.Codebase.Components.UI
 
 		[SerializeField]
 		private AudioMixer _audioMixer;
+		[SerializeField]
+		private SceneLoader _sceneLoader;
 
 		private const string SoundVolume = "SoundVolume";
 		private const string MusicVolume = "MusicVolume";
@@ -38,8 +40,13 @@ namespace Assets.Codebase.Components.UI
 				if (_start.Clickable)
 				{
 					_startFade.raycastTarget = true;
-					await _startFade.DOFade(1f, 1f).AwaitForComplete();
-					await _startFade.DOFade(0f, 0.2f).AwaitForComplete();
+
+					await UniTask.WhenAll(
+						_startFade.DOFade(1f, 1f).AwaitForComplete(),
+						_sceneLoader.Load()
+					);
+
+					_sceneLoader.Activate();
 					_startFade.raycastTarget = false;
 				}
 			};

@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Codebase.Components.UI
 {
@@ -38,6 +39,9 @@ namespace Codebase.Components.UI
 		private AudioClip _hoverClip;
 		[SerializeField]
 		private AudioClip _clickClip;
+		[Header("Events")]
+		[SerializeField]
+		private UnityEvent OnClick;
 
 		private Sequence _enterSequence;
 		private Sequence _exitSequence;
@@ -98,6 +102,13 @@ namespace Codebase.Components.UI
 			}
 
 			_text.fontStyle = value ? FontStyles.Normal : FontStyles.Strikethrough;
+		}
+
+		private void OnDestroy()
+		{
+			_enterSequence?.Kill();
+			_exitSequence?.Kill();
+			_clickSequence?.Kill();
 		}
 	}
 }
