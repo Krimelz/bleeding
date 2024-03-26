@@ -1,16 +1,15 @@
 using System;
 using UnityEngine.SceneManagement;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.ResourceProviders;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace Codebase.Infrastructure.Services
 {
 	public class SceneService
     {
-		public UniTask<SceneInstance> Load(string name, bool activateOnLoad, LoadSceneMode loadMode = LoadSceneMode.Additive)
+		public AsyncOperation Load(string name, LoadSceneMode loadMode = LoadSceneMode.Additive)
 		{
-			return Addressables.LoadSceneAsync(name, loadMode, activateOnLoad).Task.AsUniTask();
+			return SceneManager.LoadSceneAsync(name, loadMode);
 		}
 
 		public async UniTask Unload(Scene scene)
@@ -18,7 +17,7 @@ namespace Codebase.Infrastructure.Services
 			await SceneManager.UnloadSceneAsync(scene, UnloadSceneOptions.None).ToUniTask();
 		}
 
-		public async UniTask Unload(string name, Action onUnloaded = null)
+		public async UniTask Unload(string name)
 		{
 			await SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(name), UnloadSceneOptions.None).ToUniTask();
 		}

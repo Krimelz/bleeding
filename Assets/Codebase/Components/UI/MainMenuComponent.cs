@@ -41,13 +41,9 @@ namespace Assets.Codebase.Components.UI
 				{
 					_startFade.raycastTarget = true;
 
-					await UniTask.WhenAll(
-						_startFade.DOFade(1f, 1f).AwaitForComplete(),
-						_sceneLoader.Load()
-					);
-
-					_sceneLoader.Activate();
-					_startFade.raycastTarget = false;
+					await _startFade.DOFade(1f, 1f).AwaitForComplete();
+					await _sceneLoader.Load();
+					_sceneLoader.Unload("Menu");
 				}
 			};
 

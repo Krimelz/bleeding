@@ -8,7 +8,7 @@ namespace Codebase.Infrastructure.Installers
 	public class BootInstaller : MonoInstaller
 	{
 		[SerializeField]
-		private EventSystem _eventSystemPrefab;
+		private GameObject _eventSystemPrefab;
 
 		public override void InstallBindings()
 		{
@@ -19,11 +19,9 @@ namespace Codebase.Infrastructure.Installers
 
 		private void BindEventSystem()
 		{
-			Container
-				.Bind<EventSystem>()
-				.FromComponentInNewPrefab(_eventSystemPrefab)
-				.AsSingle()
-				.NonLazy();
+			Container.InstantiatePrefab(_eventSystemPrefab);
+
+			Debug.LogFormat("<color=green>{0}</color>", nameof(EventSystem));
 		}
 
 		private void BindInputService()
@@ -32,6 +30,8 @@ namespace Codebase.Infrastructure.Installers
 				.BindInterfacesAndSelfTo<InputService>()
 				.AsSingle()
 				.NonLazy();
+
+			Debug.LogFormat("<color=green>{0}</color>", nameof(InputService));
 		}
 
 		private void BindSceneService()
@@ -40,6 +40,8 @@ namespace Codebase.Infrastructure.Installers
 				.BindInterfacesAndSelfTo<SceneService>()
 				.AsSingle()
 				.NonLazy();
+
+			Debug.LogFormat("<color=green>{0}</color>", nameof(SceneService));
 		}
 	}
 }

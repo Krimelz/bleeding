@@ -3,16 +3,17 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 using UnityEngine.SceneManagement;
-using UnityEngine.ResourceManagement.ResourceProviders;
 
 public class SceneLoader : MonoBehaviour
 {
 	[SerializeField]
 	private string _sceneName;
+	[SerializeField]
+	private LoadSceneMode _loadSceneMode;
+	[SerializeField]
+	private bool loadOnStart;
 
 	private SceneService _sceneService;
-
-	private SceneInstance _scene;
 
 	[Inject]
 	private void Construct(SceneService sceneService)
@@ -20,13 +21,21 @@ public class SceneLoader : MonoBehaviour
 		_sceneService = sceneService;
 	}
 
-	public async UniTask Load()
+	private void Start()
 	{
-		_scene = await _sceneService.Load(_sceneName, false, LoadSceneMode.Single);
+		if (loadOnStart)
+		{
+			Load().Forget();
+		}
 	}
 
-	public void Activate()
+	public async UniTask Load()
 	{
-		_scene.ActivateAsync();
-	}	
+		await _sceneService.Load(_sceneName, _loadSceneMode).ToUniTask();
+	}
+
+	public async void Unload(string name)
+	{
+		await _sceneService.Unload(name);
+	}
 }

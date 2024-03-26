@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96f04874fd53ac41b383c52ce8b4469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventSystemPrefab: {fileID: 3100701136369933573, guid: 1070befd340f3534f8f58a98ecc79c28,
+  _eventSystemPrefab: {fileID: 4555169809596744342, guid: 1070befd340f3534f8f58a98ecc79c28,
     type: 3}
 --- !u!114 &2776850779845572676
 MonoBehaviour:

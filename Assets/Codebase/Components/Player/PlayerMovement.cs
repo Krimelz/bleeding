@@ -7,7 +7,7 @@ namespace Codebase.Components.Player
 	[RequireComponent(typeof(CharacterController))]
 	public class PlayerMovement : MonoBehaviour
 	{
-		[SerializeField, Min(0)]
+		[SerializeField]
 		private float _movementSpeed;
 		[SerializeField]
 		private Joystick _joystick;
@@ -31,6 +31,8 @@ namespace Codebase.Components.Player
 			var direction = new Vector3(_joystick.Direction.x, 0f, _joystick.Direction.y);
 			var motion = _movementSpeed * Time.deltaTime * direction;
 			var flags = _characterController.Move(motion);
+
+			transform.forward = direction;
 		}
 	}
 }

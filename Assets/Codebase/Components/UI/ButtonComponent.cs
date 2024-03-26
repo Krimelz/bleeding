@@ -106,9 +106,9 @@ namespace Codebase.Components.UI
 
 		private void OnDestroy()
 		{
-			_enterSequence?.Kill();
-			_exitSequence?.Kill();
-			_clickSequence?.Kill();
+			_enterSequence?.Complete();
+			_exitSequence?.Complete();
+			_clickSequence?.Complete();
 		}
 	}
 }
