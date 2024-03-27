@@ -1,4 +1,5 @@
 using Codebase.Infrastructure.Services;
+using Codebase.Infrastructure.Services.Inputs;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
@@ -27,11 +28,12 @@ namespace Codebase.Infrastructure.Installers
 		private void BindInputService()
 		{
 			Container
-				.BindInterfacesAndSelfTo<InputService>()
+				.Bind<IInputService>()
+				.To<MobileInputService>()
 				.AsSingle()
 				.NonLazy();
 
-			Debug.LogFormat("<color=green>{0}</color>", nameof(InputService));
+			Debug.LogFormat("<color=green>{0}</color>", nameof(IInputService));
 		}
 
 		private void BindSceneService()

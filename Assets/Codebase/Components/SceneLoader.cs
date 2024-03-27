@@ -32,6 +32,7 @@ public class SceneLoader : MonoBehaviour
 	public async UniTask Load()
 	{
 		await _sceneService.Load(_sceneName, _loadSceneMode).ToUniTask();
+		_sceneService.SetActiveScene(_sceneName);
 	}
 
 	public async void Unload(string name)

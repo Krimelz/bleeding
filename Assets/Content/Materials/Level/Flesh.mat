@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Grass
+  m_Name: Flesh
   m_Shader: {fileID: -6465566751694194690, guid: 20527f317eb194a4a833118658825e37,
     type: 3}
   m_Parent: {fileID: 0}
@@ -38,9 +38,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Cell_Density: 65.7
-    - _Height: 1
-    - _Pixel_Scale: 191.7
+    - _Cell_Density: 60
+    - _Frame_Rate: 8
+    - _Height: 0.5
+    - _Height_Density: 16
+    - _Invert_Factor: 0
+    - _Pixel_Scale: 300
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scale: 1605.8
@@ -48,8 +51,9 @@ Material:
     - _Speed: 1
     m_Colors:
     - _Color: {r: 0.53161263, g: 0.6556604, b: 0.40514868, a: 0}
-    - _First_Color: {r: 0.6698113, g: 0.08620268, b: 0, a: 0}
-    - _Second_Color: {r: 1, g: 0, b: 0.0094127655, a: 0}
+    - _First_Color: {r: 0.7254902, g: 0, b: 0, a: 0}
+    - _Second_Color: {r: 0.36900002, g: 0, b: 0, a: 0}
+    - _Specular: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7181694759542147443
 MonoBehaviour:

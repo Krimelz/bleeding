@@ -1,4 +1,4 @@
-using Codebase.Infrastructure.Services;
+using Codebase.Infrastructure.Services.Inputs;
 using UnityEngine;
 using Zenject;
 
@@ -9,14 +9,15 @@ namespace Codebase.Components.Player
 	{
 		[SerializeField]
 		private float _movementSpeed;
-		[SerializeField]
-		private Joystick _joystick;
 
 		private CharacterController _characterController;
-		private InputService _inputService;
+		private IInputService _inputService;
+
+		private Vector3 _movementDirection;
+		private Vector3 _lookDirection;
 
 		[Inject]
-		private void Construct(InputService inputService)
+		private void Construct(IInputService inputService)
 		{
 			_inputService = inputService;
 		}
@@ -28,11 +29,40 @@ namespace Codebase.Components.Player
 
 		private void Update()
 		{
-			var direction = new Vector3(_joystick.Direction.x, 0f, _joystick.Direction.y);
-			var motion = _movementSpeed * Time.deltaTime * direction;
-			var flags = _characterController.Move(motion);
+			_movementDirection = new Vector3(
+				_inputService.Movement.x, 
+				0f, 
+				_inputService.Movement.y
+			);
 
-			transform.forward = direction;
+			_lookDirection = new Vector3(
+				_inputService.Fire.x, 
+				0f, 
+				_inputService.Fire.y
+			);
+
+			if (_movementDirection != Vector3.zero)
+			{
+				Move();
+			}
+
+			if (_lookDirection != Vector3.zero)
+			{
+				Look();
+			}
+		}
+
+		private void Move()
+		{
+			var motion = _movementSpeed * Time.deltaTime * _movementDirection;
+			_characterController.Move(motion);
+
+			transform.forward = _movementDirection;
+		}
+
+		private void Look()
+		{
+			transform.forward = _lookDirection;
 		}
 	}
 }
