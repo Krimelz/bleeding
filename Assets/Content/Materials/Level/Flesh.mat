@@ -38,21 +38,21 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Cell_Density: 60
+    - _Cell_Density: 637
     - _Frame_Rate: 8
-    - _Height: 0.5
-    - _Height_Density: 16
+    - _Height: 4
+    - _Height_Density: 8
     - _Invert_Factor: 0
-    - _Pixel_Scale: 300
+    - _Pixel_Scale: 2000
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scale: 1605.8
     - _Smoothness: 0
-    - _Speed: 1
+    - _Speed: 1.14
     m_Colors:
     - _Color: {r: 0.53161263, g: 0.6556604, b: 0.40514868, a: 0}
-    - _First_Color: {r: 0.7254902, g: 0, b: 0, a: 0}
-    - _Second_Color: {r: 0.36900002, g: 0, b: 0, a: 0}
+    - _First_Color: {r: 1, g: 0, b: 0, a: 0}
+    - _Second_Color: {r: 0.3773585, g: 0.06522473, b: 0, a: 0}
     - _Specular: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7181694759542147443

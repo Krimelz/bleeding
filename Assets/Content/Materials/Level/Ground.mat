@@ -100,7 +100,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
-    - _Cell_Density: 200
+    - _Cell_Density: 269.4
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -114,15 +114,15 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Height: 0
-    - _Invert_Factor: 0
+    - _Invert_Factor: 0.074
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _Pixel_Scale: 300
+    - _Pixel_Scale: 1162.9
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Seed: 45
+    - _Seed: 41.4
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -136,7 +136,7 @@ Material:
     - _BaseColor: {r: 0.3962264, g: 0.21119614, b: 0.21119614, a: 1}
     - _Color: {r: 0.39622638, g: 0.2111961, b: 0.2111961, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _First_Color: {r: 0.4716981, g: 0.26922393, b: 0.26922393, a: 0}
-    - _Second_Color: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 0}
+    - _First_Color: {r: 0.511, g: 0.49975798, b: 0.39857998, a: 0}
+    - _Second_Color: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
