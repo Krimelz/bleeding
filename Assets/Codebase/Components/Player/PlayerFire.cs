@@ -9,7 +9,11 @@ namespace Codebase.Components.Player
 	public class PlayerFire : MonoBehaviour
 	{
 		[SerializeField]
+		private Transform _fireTarget;
+		[SerializeField]
 		private float _fireRate;
+		[SerializeField]
+		private Bullet _bulletPrefab;
 
 		private IInputService _inputService;
 
@@ -33,6 +37,8 @@ namespace Codebase.Components.Player
 		{
 			_canFire = false;
 			await transform.DOShakePosition(0.2f, 0.5f, 30, fadeOut: true);
+			var bullet = Instantiate(_bulletPrefab, _fireTarget.position, Quaternion.identity, null);
+			bullet.Shoot(transform.forward);
 			await UniTask.WaitForSeconds(_fireRate);
 			Debug.Log("<color=yellow>Fire!</color>");
 			_canFire = true;

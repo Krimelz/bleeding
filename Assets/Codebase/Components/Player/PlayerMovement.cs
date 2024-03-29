@@ -9,12 +9,15 @@ namespace Codebase.Components.Player
 	{
 		[SerializeField]
 		private float _movementSpeed;
+		[SerializeField]
+		private float _gravityForce = 1f;
 
 		private CharacterController _characterController;
 		private IInputService _inputService;
 
 		private Vector3 _movementDirection;
 		private Vector3 _lookDirection;
+		private Vector3 _gravityDirection;
 
 		[Inject]
 		private void Construct(IInputService inputService)
@@ -50,6 +53,8 @@ namespace Codebase.Components.Player
 			{
 				Look();
 			}
+
+			Gravity();
 		}
 
 		private void Move()
@@ -63,6 +68,20 @@ namespace Codebase.Components.Player
 		private void Look()
 		{
 			transform.forward = _lookDirection;
+		}
+
+		private void Gravity()
+		{
+			if (_characterController.isGrounded)
+			{
+				_gravityDirection = Vector3.down * Time.deltaTime;
+			}
+			else
+			{
+				_gravityDirection += Vector3.down * _gravityForce * Time.deltaTime;
+			}
+
+			_characterController.Move(_gravityDirection);
 		}
 	}
 }
